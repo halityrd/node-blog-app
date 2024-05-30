@@ -1,6 +1,41 @@
+
 .navbar {
     padding-top: 15px;
     padding-bottom: 15px;
     font-size: 12px;
     letter-spacing: 5px;
 }
+
+.main-row {
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    font-family: "Arial", sans-serif;
+}
+
+.main-row h1 {
+    color: #444;
+}
+
+.main-row ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+  
+.main-row ul li {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.main-row p {
+    margin-bottom: 20px;
+}
+
+small {
+    display: block;
+    margin-bottom: 20px;
+    color: #888;
+}
+
