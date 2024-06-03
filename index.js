@@ -1,8 +1,11 @@
 import express from "express";
+import bodyParser from "body-parser";
 
 const app = express();
 const port = 3001;
 app.use(express.static("public"));
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 let posts = [
     {
@@ -31,9 +34,29 @@ let posts = [
     },
   ];
 
+let lastId = 3;
+
 app.get("/", (reg, res) => {
     res.render("index.ejs", {posts: posts});
 })
+
+app.get("/new", (req, res) => {
+  res.render("edit.ejs", { heading: "New Post", submit: "Create Post" });
+});
+
+app.post("/new", (req, res) => {
+  const newId = lastId += 1;
+  const post = {
+    id: newId,
+    title: req.body.title,
+    content: req.body.content,
+    author: req.body.author,
+    date: new Date(),
+  };
+  lastId = newId;
+  posts.push(post);
+  res.redirect("/");
+});
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);

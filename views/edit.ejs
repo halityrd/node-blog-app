@@ -1,0 +1,56 @@
+<%- include("partials/header") %>
+
+<div class="col-lg-8 main-row">
+  <h1><%= heading %></h1>
+  <% if (locals.post) { %>
+  <form method="post" action="/api/posts/<%=post.id%>">
+    <input
+      type="text"
+      name="title"
+      class="form-control mb-3"
+      value="<%=post.title %>"
+    />
+    <textarea name="content" rows="10" class="form-control">
+<%=post.content %></textarea
+    >
+    <input
+      type="text"
+      name="author"
+      class="form-control"
+      value="<%=post.author %>"
+    />
+    <div class="d-grid gap-2">
+        <button class="btn btn-secondary" type="submit"><%= submit %></button>
+      </div>
+  </form>
+  <% } else {%>
+  <form method="post" action="/new">
+    <input
+      class="form-control mb-3"
+      type="text"
+      name="title"
+      placeholder="Title"
+      required
+    />
+    <textarea
+      class="form-control mb-3"
+      name="content"
+      placeholder="Content"
+      required
+      rows="10"
+    ></textarea>
+    <input
+      class="form-control mb-3"
+      type="text"
+      name="author"
+      placeholder="Author"
+      required
+    />
+    <div class="d-grid gap-2">
+      <button class="btn btn-secondary" type="submit"><%= submit %></button>
+    </div>
+  </form>
+  <% } %>
+</div>
+
+<%- include("partials/footer") %>
